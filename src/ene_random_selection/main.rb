@@ -23,8 +23,8 @@ module Eneroth::RandomSelection
 
     selection = Sketchup.active_model.selection
     selection.clear
-    end_index = ((@@initial_selection.size-1)*percentage).round
-    selection.add(@@initial_selection[0..end_index])
+    qty = (@@initial_selection.size*percentage).round
+    selection.add(@@initial_selection[0..qty-1]) unless qty == 0
 
     selection.size
   end
