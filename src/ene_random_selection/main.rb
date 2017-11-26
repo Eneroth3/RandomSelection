@@ -1,11 +1,22 @@
 module Eneroth::RandomSelection
 
   @@initial_selection = []
+  @@percentage = 0.5
+
+  def self.set_percentage(percentage)
+    @@percentage = percentage
+  end
+
+  def self.get_percentage
+    @@percentage
+  end
 
   def self.read_initial_selection
     model = Sketchup.active_model
     @@initial_selection =
       model.selection.empty? ? model.active_entities.to_a : model.selection.to_a
+
+    shuffle
 
     nil
   end
@@ -16,14 +27,14 @@ module Eneroth::RandomSelection
     nil
   end
 
-  def self.make_selection(percentage = 0.5)
+  def self.make_selection
     # Active context may have changed since intial selection was last read,
     # rendering it invalid.
     ensure_valid_initial_selection
 
     selection = Sketchup.active_model.selection
     selection.clear
-    qty = (@@initial_selection.size*percentage).round
+    qty = (@@initial_selection.size*@@percentage).round
     selection.add(@@initial_selection[0..qty-1]) unless qty == 0
 
     selection.size
