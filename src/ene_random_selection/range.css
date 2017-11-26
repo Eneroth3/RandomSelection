@@ -33,6 +33,7 @@ input[type=range]::-webkit-slider-thumb {
 input[type=range]::-webkit-slider-runnable-track {
   width: 100%;
   height: 4px;
-  background: #E72B2D; /*No way in Chromium to have different color in different parts of slider :( */
+  background: #BABCBF;
+  /* TODO: background: #E72B2D; for left part of slider if possible one day*/
   border-radius: 2px;
 }
