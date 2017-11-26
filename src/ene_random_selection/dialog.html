@@ -3,9 +3,38 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Eneroth Random Selection</title>
+    <link rel="stylesheet" href="range.css">
+    <style>
+      body {
+        15px;
+        background: #F3F3F7;
+      }
+      input[type=range] {
+        width: 100%;
+      }
+      button {
+        padding: 6px;
+        border: 1px solid #CCC;
+        border-radius: 1px;
+        background: white;
+        color: #333;
+        font-size: 12px;
+        height: 33px;
+      }
+      button:hover {
+        background: #E6E6E6;
+      }
+      button:focus {
+        outline: none;
+      }
+    </style>
   </head>
   <body>
-    <input type="range" min="0" max="1" value="1" step="0.01" oninput="sketchup.set_percentage(this.value)" />
-    <button onclick="sketchup.shuffle()">Shuffle</button>
+    <p>
+      <input type="range" min="0" max="1" value="1" step="0.01" oninput="sketchup.set_percentage(this.value)" />
+    </p>
+    <p>
+      <button onclick="sketchup.shuffle()">Shuffle</button>
+    </p>
   </body>
 </html>

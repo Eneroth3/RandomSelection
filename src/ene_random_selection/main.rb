@@ -58,7 +58,7 @@ module Eneroth::RandomSelection
     dialog = UI::HtmlDialog.new(
       dialog_title: EXTENSION.name,
       preferences_key: PLUGIN_ID,
-      styl: UI::HtmlDialog::STYLE_UTILITY
+      style: UI::HtmlDialog::STYLE_DIALOG
     )
     dialog.set_url(File.join(PLUGIN_DIR, "dialog.html"))
     dialog.center
