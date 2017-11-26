@@ -16,7 +16,7 @@ module Eneroth
     PLUGIN_DIR = File.join(File.dirname(__FILE__), PLUGIN_ID)
 
     EXTENSION = SketchupExtension.new(
-      "Eneroth Random",
+      "Eneroth Random Selection",
       File.join(PLUGIN_DIR, "main")
     )
     EXTENSION.creator     = "Julia Christina Eneroth"
