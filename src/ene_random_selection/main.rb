@@ -1,7 +1,13 @@
 module Eneroth::RandomSelection
 
+  HTML = <<-EOT
+    <input type="range" min="0" max="1" value="1" step="0.01" oninput="sketchup.set_percentage(this.value)" />
+    <button onclick="sketchup.shuffle()">Shuffle</button>
+  EOT
+
   @@initial_selection = []
-  @@percentage = 0.5
+  @@percentage = 1
+  @@dialog = nil
 
   def self.set_percentage(percentage)
     @@percentage = percentage
@@ -53,6 +59,46 @@ module Eneroth::RandomSelection
     nil
   end
 
-  # For now call methods from console.
+  def self.create_dialog
+    dialog = UI::HtmlDialog.new(
+      dialog_title: EXTENSION.name,
+      preferences_key: PLUGIN_ID,
+      styl: UI::HtmlDialog::STYLE_DIALOG
+    )
+    dialog.center
+
+    dialog
+  end
+
+  def self.display_dialog
+    read_initial_selection
+
+    if @@dialog && @@dialog.visible?
+      @@dialog.bring_to_front
+    else
+      @@dialog ||= create_dialog
+      @@dialog.add_action_callback("shuffle") { |_|
+        shuffle
+        make_selection
+      }
+      @@dialog.add_action_callback("set_percentage") { |_, percentage|
+        set_percentage(percentage.to_f)
+        make_selection
+      }
+      @@dialog.set_html(HTML)
+      @@dialog.show
+    end
+
+    # TODO: Set values.
+    make_selection
+
+    nil
+  end
+
+  unless(file_loaded?(__FILE__))
+    file_loaded(__FILE__)
+    menu = UI.menu("Plugins")
+    menu.add_item(EXTENSION.name) { display_dialog }
+  end
 
 end
