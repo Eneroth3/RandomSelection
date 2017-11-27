@@ -55,11 +55,15 @@ module Eneroth::RandomSelection
   end
 
   def self.create_dialog
-    dialog = UI::HtmlDialog.new(
+    options = {
       dialog_title: EXTENSION.name,
       preferences_key: PLUGIN_ID,
-      styl: UI::HtmlDialog::STYLE_UTILITY
-    )
+      style: UI::HtmlDialog::STYLE_DIALOG,
+      height: 150,
+      width: 400
+    }
+    dialog = UI::HtmlDialog.new(options)
+    dialog.set_size(options[:width], options[:height])
     dialog.set_url(File.join(PLUGIN_DIR, "dialog.html"))
     dialog.center
 
