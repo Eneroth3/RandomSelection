@@ -29,8 +29,9 @@ module Eneroth::RandomSelection
   end
 
   def self.make_selection
-    # Active context may have changed since intial selection was last read,
-    # rendering it invalid.
+    # Active context may have changed since initial selection was last read,
+    # rendering it invalid. On Mac user may also have switched to another open
+    # model.
     ensure_valid_initial_selection
 
     selection = Sketchup.active_model.selection
