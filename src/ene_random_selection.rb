@@ -1,11 +1,3 @@
-#-------------------------------------------------------------------------------
-#
-#    Author: Julia Christina Eneroth (eneroth3@gmail.com)
-# Copyright: Copyright (c) 2017
-#   License: MIT
-#
-#-------------------------------------------------------------------------------
-
 require "sketchup.rb"
 require "extensions.rb"
 
@@ -21,8 +13,7 @@ module Eneroth
     )
     EXTENSION.creator     = "Julia Christina Eneroth"
     EXTENSION.description =
-      "Randomly shrink selection to given percentage."\
-      "Can be used to introduce variety in model."
+      "Randomly select objects. Can be used to create variety."
     EXTENSION.version     = "1.0.0"
     EXTENSION.copyright   = "#{EXTENSION.creator} 2017"
     Sketchup.register_extension(EXTENSION, true)
