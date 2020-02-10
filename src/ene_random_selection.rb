@@ -14,8 +14,8 @@ module Eneroth
     EXTENSION.creator     = "Julia Christina Eneroth"
     EXTENSION.description =
       "Randomly select objects. Can be used to create variety."
-    EXTENSION.version     = "1.0.0"
-    EXTENSION.copyright   = "#{EXTENSION.creator} 2017"
+    EXTENSION.version     = "1.0.1"
+    EXTENSION.copyright   = "#{EXTENSION.creator} 2020"
     Sketchup.register_extension(EXTENSION, true)
 
   end
