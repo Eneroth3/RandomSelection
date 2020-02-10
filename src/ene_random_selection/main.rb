@@ -65,7 +65,7 @@ module Eneroth::RandomSelection
     }
     dialog = UI::HtmlDialog.new(options)
     dialog.set_size(options[:width], options[:height])
-    dialog.set_url(File.join(PLUGIN_DIR, "dialog.html"))
+    dialog.set_file(File.join(PLUGIN_DIR, "dialog.html"))
     dialog.center
 
     dialog
